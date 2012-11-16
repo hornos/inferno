@@ -1,0 +1,85 @@
+#!/bin/bash
+
+if ! test -r /home/inferno/shell/common.conf; then
+  exit 1
+fi
+. /home/inferno/shell/common.conf
+
+scname="update_dhcpd.sh"
+lockname="update_dhcp"
+python_gen="${INFERNO_PYTHON}/gen_dhcp.py"
+shell_gen="${INFERNO_SHELL}/gen_dhcpd.conf.sh"
+dhcp_dir="${INFERNO_DIR}/dhcp"
+
+
+now=`date +"%Y-%m-%d[%H:%M:%S]"`
+echo "${scname}: Started at ${now}"
+
+create_lock ${lockname}
+if test $? -eq 0; then
+  echo "${scname}: UNDER LOCK -- dhcpd update will be skipped"
+  exit 1
+fi
+
+
+${python_gen}
+if ! test $? -eq 0; then
+  echo "${scname}: SQL FAILED"
+  delete_lock ${lockname}
+  exit 1
+fi
+echo "${scname}: SQL OK"
+
+
+${shell_gen}
+if ! test $? -eq 0; then
+  echo "${scname}: Build dhcpd.conf FAILED"
+  delete_lock ${lockname}
+  exit 1
+fi
+echo "${scname}: Build dhcpd.conf OK"
+
+
+if ! test -r "${dhcp_dir}/dhcpd.conf"; then
+  echo "${scname}: Backup and Restart dhcpd server FAILED"
+  delete_lock ${lockname}
+  exit 1
+fi
+echo "${scname}: Backup and Restart dhcpd server OK"
+
+
+echo -n "${scname}: "
+cp -fv /etc/dhcpd.conf "${BACKUP_DHCP}/dhcpd.conf.${now}"
+if ! test $? -eq 0; then
+  delete_lock ${lockname}
+  exit 1
+fi
+
+
+echo -n "${scname}: "
+cp -fv "${dhcp_dir}/dhcpd.conf" /etc/dhcpd.conf
+if ! test $? -eq 0; then
+  delete_lock ${lockname}
+  exit 1
+fi
+
+# SuSe specific
+# echo "${scname}: Restarting the dhcpd server"
+# /etc/rc.d/dhcpd restart
+
+# Ubuntu specific
+echo "${scname}: Restarting the dhcpd server"
+/etc/init.d/dhcp3-server restart
+
+if ! test $? -eq 0; then
+  delete_lock ${lockname}
+  exit 1
+fi
+
+
+
+now=`date +"%Y-%m-%d[%H:%M:%S]"`
+echo "update_dhcpd.sh: Finished at ${now}"
+
+delete_lock ${lockname}
+exit 0

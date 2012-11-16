@@ -1,0 +1,17 @@
+$ORIGIN ?.?.?.IN-ADDR.ARPA.
+$TTL 3600
+;
+; Data file for reverse address to hostname.
+;
+@	IN	SOA	fqdn. fqdn. (
+			__SERIAL__	; Serial reserved
+			1H	; Refresh
+			10M	; Retry
+			4W2D	; Expire
+			1H )	; Minimum (negative caching TTL)
+		NS	ns.
+		NS	ns.
+		NS	ns.
+;
+; HEADER
+;

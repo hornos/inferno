@@ -1,0 +1,41 @@
+body {
+    font-family: verdana, tahoma, sans;
+    font-size: 10px;
+    background-image: url("../img/bg.gif");
+    color: white;
+    margin: 0px;
+}
+
+a {
+    text-decoration: none;
+    color: red;
+    font-family: verdana, tahoma, sans;
+    font-size: 10px;
+}
+
+
+a:active {
+    text-decoration: underline;
+    color: red;
+    font-family: verdana, tahoma, sans;
+    font-size: 10px;
+	font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: red;
+    font-family: verdana, tahoma, sans;
+    font-size: 10px;
+}
+
+a:visited {
+    text-decoration: none;
+    color: purple;
+    font-family: verdana, tahoma, sans;
+    font-size: 10px;
+}
+
+table.main {
+  background-color: black;
+}

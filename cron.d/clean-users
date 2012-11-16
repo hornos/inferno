@@ -1,0 +1,2 @@
+# every 5 minute
+*/5 * * * *     root  /home/inferno/python/clean_users.py 2>&1 > /var/log/clean_users.log

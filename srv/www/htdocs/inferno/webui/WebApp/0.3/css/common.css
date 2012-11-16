@@ -1,0 +1,88 @@
+body {
+    font-family: verdana, tahoma, sans;
+    font-size: 10px;
+    background-color: #fefefe;
+
+    color: black;
+    margin: 0px;
+}
+
+a {
+    text-decoration: none;
+    color: blue;
+    font-family: verdana, tahoma, sans;
+    font-size: 10px;
+}
+
+
+a:active {
+    text-decoration: underline;
+    color: blue;
+    font-family: verdana, tahoma, sans;
+    font-size: 10px;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: black;
+    font-family: verdana, tahoma, sans;
+    font-size: 10px;
+}
+
+a:visited {
+    color: blue;
+    font-family: verdana, tahoma, sans;
+    font-size: 10px;
+}
+
+td {
+	color: black;
+    font-family: verdana, tahoma, sans;
+    font-size: 10px;
+}
+
+div {
+	color: black;
+    font-family: verdana, tahoma, sans;
+    font-size: 10px;
+}
+
+span {
+	color: black;
+    font-family: verdana, tahoma, sans;
+    font-size: 10px;
+}
+
+
+input {
+  padding-top: 1px;
+  padding-bottom: 2px;
+  padding-left: 2px;
+  padding-right: 2px;
+  margin-top: 2px;
+  margin-bottom: 1px;
+}
+
+select {
+  border: 1px solid gray;
+  padding: 1px;
+}
+
+textarea {
+  padding: 2px;
+  border: 1px solid gray;
+}
+
+div.header_title {
+  color: white;
+  font-size: 24px;
+  padding-left: 5px;
+  padding-top: 5px;
+}
+
+div.header_expl {
+  color: gray;
+  font-size: 12px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+}

@@ -1,0 +1,140 @@
+#!/bin/bash
+
+cd /home/inferno/shell
+
+if ! test -r /home/inferno/shell/common.conf; then
+  exit 1
+fi
+. /home/inferno/shell/common.conf
+
+scname="update_daemon.sh"
+lockname="update"
+reqlockname="update_request"
+
+update_dhcpd="${INFERNO_SHELL}/update_dhcpd.sh"
+update_bind="${INFERNO_SHELL}/update_bind.sh"
+update_radius="${INFERNO_SHELL}/update_radius.sh"
+update_c3550="${INFERNO_SHELL}/update_c3550.sh"
+
+
+is_lock "update_request"
+if test $? -eq 0; then
+  exit 1
+fi
+
+now=`date +"%Y-%m-%d[%H:%M:%S]"`
+echo
+echo
+echo "${scname} Started at ${now}"
+echo -n "${scname}: "
+cat "${INFERNO_LOCK}/${reqlockname}"
+echo
+
+create_lock ${lockname}
+if test $? -eq 0; then
+  echo "${scname}: UNDER LOCK -- update will be skipped"
+  exit 1
+fi
+
+
+#
+# DHCP UPDATE
+#
+echo "${scname}: STAGE 1: DCHP UPDATE"
+is_lock "${reqlockname}_dhcp"
+if ! test $? -eq 0; then
+
+  ${update_dhcpd}
+  if ! test $? -eq 0; then
+	echo "${scname}: dhcp update FAILED"
+  else
+	echo "${scname}: dhcp update OK"
+  fi
+  
+  delete_lock "${reqlockname}_dhcp"
+fi
+
+
+echo "----------------------------------------------------------------------------"
+#
+# DNS UPDATE
+#
+echo "${scname}: STAGE 2: DNS UPDATE"
+is_lock "${reqlockname}_dns"
+if ! test $? -eq 0; then
+
+  ${update_bind}
+  if ! test $? -eq 0; then
+	echo "${scname}: bind update FAILED"
+  else
+	echo "${scname}: bind update OK"
+  fi
+  
+  delete_lock "${reqlockname}_dns"
+fi
+
+
+echo "----------------------------------------------------------------------------"
+#
+# Radius UPDATE
+#
+echo "${scname}: STAGE 3: Radius UPDATE"
+is_lock "${reqlockname}_radius"
+if ! test $? -eq 0; then
+
+  ${update_radius}
+  if ! test $? -eq 0; then
+	echo "${scname}: radius update FAILED"
+  else
+	echo "${scname}: radius update OK"
+  fi
+  
+  delete_lock "${reqlockname}_radius"
+fi
+
+
+echo "----------------------------------------------------------------------------"
+#
+# c3550 UPDATE
+#
+echo "${scname}: STAGE 4: c3550 UPDATE"
+is_lock "${reqlockname}_c3550"
+if ! test $? -eq 0; then
+
+  ${update_c3550}
+  if ! test $? -eq 0; then
+	echo "${scname}: c3550 update FAILED"
+  else
+	echo "${scname}: c3550 update OK"
+  fi
+  
+  delete_lock "${reqlockname}_c3550"
+fi
+
+### dual modified section start
+if [[ "$(hostname)" == "purgatorio" ]]; then
+  echo "SECONDARY INFERNO - PURGATORIO - $(hostname)"
+else
+  echo "PRIMARY INFERNO - PARADISO - $(hostname)"
+
+  purgatorio_pings=$(ping purgatorio -c 5 -q | grep transmitted | cut -d" " -f4)
+  if [[ $purgatorio_pings > "4" ]]; then
+    echo "PURGATORIO ONLINE"
+    ssh "root@purgatorio" touch "${INFERNO_LOCK}/update_request"
+    rsync -avz "/var/backups/postgres/" "root@purgatorio:/var/backups/postgres"
+  else
+    echo "PURGATORIO OFFLINE"
+  fi
+fi
+### dual modified section end
+
+
+
+now=`date +"%Y-%m-%d[%H:%M:%S]"`
+echo "${scname}: Finished at ${now}"
+
+cp -f "${INFERNO_LOGS}/temp.lastlog" "${INFERNO_LOGS}/update_daemon.lastlog"
+
+delete_lock ${lockname}
+delete_lock "${reqlockname}"
+exit 0

@@ -1,0 +1,23 @@
+$ORIGIN fqdn.
+$TTL 3600
+;
+; Data file of hostnames in this zone.
+;
+@	IN	SOA	fqdn. (
+			__SERIAL__	; Serial reserved
+			1H	; Refresh
+			10M	; Retry
+			4W2D	; Expire
+			1H )	; Minimum (negative caching TTL)
+		NS	ns.
+		NS	ns.
+		NS	ns.
+		A	address
+		MX	0	mx.
+;		MX	10	mx.		
+		TXT	"Organization"
+		LOC	Location
+
+;
+; HEADER
+;

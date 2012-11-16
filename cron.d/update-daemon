@@ -1,0 +1,2 @@
+# every minute
+* * * * *     root  /home/inferno/shell/update_daemon.sh 2>&1 | /usr/bin/tee /home/inferno/logs/temp.lastlog 1>> /var/log/update_daemon.log

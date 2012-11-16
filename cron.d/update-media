@@ -1,0 +1,2 @@
+# 5 past noon
+# 15 0 * * *     root  /home/inferno/shell/update_media.sh

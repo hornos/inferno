@@ -1,0 +1,3 @@
+# 5 past noon
+# 5 0 * * *     root  /home/inferno/shell/update_auto.sh
+13 2 * * *     root  /home/inferno/shell/update_auto.sh > /var/log/daemon.log

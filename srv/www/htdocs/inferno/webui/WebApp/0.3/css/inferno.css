@@ -1,0 +1,362 @@
+
+td.infobar {
+  padding-left: 5px;
+  color: black;;
+  background-color: #dddddd;  
+}
+
+td.menu_title {
+  font-size: 12px;
+  font-weight: bold;
+  padding-left: 5px;
+  padding-bottom: 7px;
+  padding-top: 10px;
+}
+
+div.menu_title {
+  font-size: 12px;
+  font-weight: bold;
+  padding-left: 5px;
+  padding-bottom: 7px;
+  padding-top: 10px;
+  cursor: pointer;
+}
+
+div.menu_title:hover {
+  text-decoration: underline;
+}
+
+td.menu_item {
+  padding-left: 15px;
+  padding-bottom: 5px;
+  font-size: 14px;
+}
+
+td.module {
+  padding: 3px;
+  padding-left: 10px;
+  margin: 2px;
+}
+
+.error {
+  padding-top: 20px;
+  padding-bottom: 10px;
+  color: red;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.info {
+  padding-top: 20px;
+  padding-bottom: 10px;
+  color: black;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+
+.info_green {
+  color: green;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.info_red {
+  color: red;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.info_orange {
+  color: orange;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+
+.border_error {
+  margin: 2px;
+  padding: 1px;
+  border: 1px solid red;
+}
+
+.border_ok {
+  margin: 2px;
+  padding: 1px;
+  border: 1px solid green;
+}
+
+.border_needed {  
+  margin: 2px;
+  padding: 1px;
+  border: 2px solid yellow;
+  background-color: yellow;
+}
+
+.infobar {
+  color: #555555;
+  padding: 2px;
+}
+
+.contactbar {
+  color: black;
+  padding: 2px;
+  margin-bottom: 15px;
+  margin-top: 20px;
+}
+
+
+.form_title {
+  font-size: 24px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
+.help_title {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.help_text {
+  padding-bottom: 15px;
+  width: 600px;
+}
+
+.cat_label {
+  font-size: 14px;
+  font-weight: bold;
+  padding-left: 20px;
+  padding-top: 15px;
+  padding-bottom: 5px;
+  text-decoration: underline;
+}
+
+.pink {
+  color: #ff00ff;
+  font-size: 12px;
+}
+
+.blue {
+  color: #000080;
+  font-size: 12px;
+}
+
+.green {
+  color: green;
+  font-size: 12px;
+}
+
+.red {
+  color: red;
+  font-size: 12px;
+}
+
+.bgreen {
+  color: green;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.bred {
+  color: red;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.black {
+  color: black;
+  font-size: 12px;
+}
+
+.orange {
+  color: orange;
+  font-size: 12px;
+}
+
+.purple {
+  color: purple;
+  font-size: 12px;  
+}
+
+.table_title {
+  font-weight: bold;
+  padding-bottom: 2px;
+}
+
+.table_header {
+  border-bottom: 1px solid black;
+  margin-bottom: 3px;
+  padding-left: 2px;
+}
+
+.item_label {
+  font-size: 12px;
+  padding-right: 5px;
+}
+
+.row0 {
+  background-color: white;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 2px;
+}
+
+.row1 {
+  background-color: #eeeeee;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 2px;
+}
+
+td.td_form_cont {
+  padding-bottom: 2px;
+  padding-top: 2px;
+}
+
+.radio {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.correct {
+  font-size: 14px;
+  font-weight: bold;
+  padding-top: 1px;
+  padding-bottom: 4px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 20px;
+  color: white;
+  background-color: red;
+  border: 1px solid red;
+}
+
+.combostat {
+  border: 1px solid gray;
+  padding: 2px;
+  padding-left: 8px;
+  padding-right: 8px;
+  font-size: 14px;
+}
+
+.noborder {
+  border: 0px solid white;
+  text-align: center;
+}
+
+.noborder:active {
+  border: 0px solid white;
+}
+
+.noborder:hover {
+  border: 0px solid white;
+}
+
+.noborder:visited {
+  border: 0px solid white;
+}
+
+img {
+  border: 0px solid white;
+}
+
+.device {
+  padding-top: 10px;
+  padding-bottom: 3px;
+  font-weight: bold;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.port {
+  font-size: 14px;  
+}
+
+.ttext {
+  font-size: 14px;
+  generic-family: monospace; 
+}
+
+.bold {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.cascade {
+  border: 2px solid red;
+  padding: 5px;
+  padding-right: 50px;
+  font-weight: bold;
+  color: red;
+}
+
+.page_title {
+  font-size: 22px;
+}
+
+.page_subtitle {
+  padding-top: 10px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.clock {
+  font-size: 24px;
+  font-weight: bold;
+  color: gray;
+  padding-right: 10px;
+  font-family: monospace;
+}
+
+.suffx {
+  padding-left: 5px;
+  font-size: 14px;
+}
+
+.cname_hn {
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px;
+  padding-right: 5px;
+}
+
+.cname_rec {
+  font-size: 12px;
+  padding: 2px;
+}
+
+.logtime {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.user {
+  font-size: 10px;
+  font-weight: bold;
+  padding-left: 5px;
+}
+
+.action {
+  font-size: 10px;
+  font-weight: bold;
+  padding-left: 5px;
+}
+
+.query {
+  font-size: 10px;
+  padding-left: 5px;
+}
+
+.dns_counter {
+  width: 170px;
+  font-size: 12px;
+  font-weight: bold;
+  padding-bottom: 5px;
+  text-align: right;
+}

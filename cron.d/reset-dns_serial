@@ -1,0 +1,2 @@
+# at noon
+0 0 * * *     root  /bin/echo "0" > /home/inferno/dns/dns_serial
